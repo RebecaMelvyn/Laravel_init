@@ -25,30 +25,30 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $input = $request->only(['name', 'email', 'password']);
-        $input['password'] = bcrypt($input['password']); // Crypter le mot de passe
+        $input = $request->only(['name', 'email', 'password', 'is_admin']);
+        $input['password'] = bcrypt ($input['password']); // bcrypt pour Crypter le mot de passe
         $user = User::create($input);
+
 
         return redirect()->route('users.index');
     }
 
 
-    public function show(User $user)
+    public function show(User $user): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('users.show', ['user' => $user]);
     }
 
 
-    public function edit(User $user)
+    public function edit(User $user): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('users.edit', ['user' => $user]);
     }
 
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user): \Illuminate\Http\RedirectResponse
     {
-
-        $input = $request->only(['name', 'email', 'password', 'role']);
+        $input = $request->only(['name', 'email', 'is_admin']);
         $user->update($input);
 
         return redirect()->route('users.show', $user);

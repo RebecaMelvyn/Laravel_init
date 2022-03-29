@@ -14,16 +14,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-
-    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role',
+
     ];
 
     protected $hidden = [
@@ -32,10 +27,8 @@ class User extends Authenticatable
         'is_admin',
     ];
 
-
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
     ];
 
     protected function password(): Attribute

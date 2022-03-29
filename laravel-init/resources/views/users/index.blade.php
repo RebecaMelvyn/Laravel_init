@@ -22,9 +22,15 @@
 
 @endsection
     <style>
+        h1{
+            text-align: center;
+            padding-bottom: 5%;
+        }
         .col-3{
             background-color: #ffdd40;
             border-radius: 20px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            align-items: center;
+            margin-left: 5%;
         }
     </style>

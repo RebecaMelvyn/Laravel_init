@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 
-Route::resource('users', UsersController::class)->middleware('auth'); // 'auth' car allias proposé par laravel (helpers.php)
+Route::resource('users', UsersController::class)->middleware('auth'); // 'auth' car raccourci de authenticate proposé par laravel (helpers.php)
 //Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 //Route::post('/users', [UsersController::class, 'store'])->name('users.store');
 //Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
@@ -35,10 +35,10 @@ Route::post('/authentication', [LoginController::class, 'authentication'])->name
 Route::get('/register', [LoginController::class, 'register'])->name('auth.register');
 Route::post('/registration', [LoginController::class, 'registration'])->name('auth.registration');
 Route::get('/signout', [LoginController::class, 'signOut'])->name('auth.signout');
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 Route::get('/password', [PasswordController::class, 'forgot'])->name('password.forgot');
 Route::post('/password',[PasswordController::class, 'sendEmail'])->name('password.sendEmail');
 Route::get('/password-reset/{token}', [PasswordController::class, 'reset'])->name('password.reset');
 Route::post('/password-reset/{token}', [PasswordController::class, 'update'])->name('password.update');
 
-Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard')->middleware('auth');;

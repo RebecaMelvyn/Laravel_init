@@ -41,6 +41,12 @@
                 <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="text my-3 col">
+                <label for="roles">Choisissez un role:</label>
+                <label for="role">Admin</label><input type="radio" id="role" name="roles" value="{{ old('is_admin') }}">
+                <label for="role">User</label><input type="radio" id="role" name="roles" checked>
+            </div>
         </div>
         <input class="btn btn-primary" type="submit" id="submit" value="Ajouter l'utilisateur">
     </form>

@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'password' => ['required', 'confirmed', Password::min(4)
                 ->letters()
                 ->uncompromised()
-            ]
+            ],
         ];
     }
 }

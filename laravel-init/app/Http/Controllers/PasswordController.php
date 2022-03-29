@@ -69,4 +69,5 @@ class PasswordController extends Controller
 
         return redirect(route('users.index')); // Redirection lors du changement réalisé
     }
+
 }

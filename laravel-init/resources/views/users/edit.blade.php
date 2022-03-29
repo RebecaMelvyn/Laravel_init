@@ -49,10 +49,20 @@
             <div class="form-row">
                 @if(Auth::user()->is_admin)
                     <div class="text my-3 col">
-                        <select id="role" name="role" class="form-select" >
-                            <option value="0">Non admin</option>
-                            <option value="1">Admin</option>
-                        </select>
+
+                        <label for="role">Role de l'user</label>
+                            {{$role = $user->is_admin }}
+                            <select id="role" name="role">
+                            <option id="admin" name="admin" @if($role=="1")@endif>Admin</option>
+                            <option id="user" name="user" @if($role=="0") selected="selected"@endif>User</option>
+                            </select>
+                        @if("role"=="1")
+                            {{$user->is_admin == '1'}}
+                        @else
+                            {{$user->is_admin == '0'}}
+                            @endif
+
+
                     </div>
                 @endif
             </div>
