@@ -47,24 +47,16 @@
                 </div>
             </div>
             <div class="form-row">
+
                 @if(Auth::user()->is_admin)
                     <div class="text my-3 col">
-
-                        <label for="role">Role de l'user</label>
-                            {{$role = $user->is_admin }}
-                            <select id="role" name="role">
-                            <option id="admin" name="admin" @if($role=="1")@endif>Admin</option>
-                            <option id="user" name="user" @if($role=="0") selected="selected"@endif>User</option>
-                            </select>
-                        @if("role"=="1")
-                            {{$user->is_admin == '1'}}
-                        @else
-                            {{$user->is_admin == '0'}}
-                            @endif
-
-
+                        <select id="is_admin" name="is_admin" class="form-select">
+                            <option value="0" @if (!$user->is_admin) selected @endif>Non admin</option>
+                            <option value="1" @if ($user->is_admin) selected @endif >Admin</option>
+                        </select>
                     </div>
                 @endif
+
             </div>
             <input class="btn btn-primary" type="submit" id="submit" value="Modifier l'utilisateur">
         </form>

@@ -48,7 +48,12 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user): \Illuminate\Http\RedirectResponse
     {
-        $input = $request->only(['name', 'email', 'is_admin']);
+        if (Auth::user()->is_admin){
+            $input = $request->only(['name', 'email', 'avatar_url', 'is_admin']);
+        } else {
+            $input = $request->only(['name', 'email', 'avatar_url']);
+        }
+
         $user->update($input);
 
         return redirect()->route('users.show', $user);

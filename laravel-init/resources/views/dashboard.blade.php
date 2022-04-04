@@ -10,7 +10,14 @@
                     <div class="profil d-flex flex-wrap mr-2">
                         <div class="name">{{ $user->name }}</div>
                         <div class="email">{{ $user->email }}</div>
-                        <div class="role">{{ $user->is_admin }}</div>
+                        <div class="role">
+                            @if($user->is_admin)
+                                <span class="admin">admin</span>
+                            @endif
+                            @if(!$user->is_admin)
+                                <span class="not-admin">non admin</span>
+                            @endif
+                        </div>
                     </div>
                     <a href="{{route('users.show', $user)}}" class="showmore"></a>
                     <div class="actions d-flex flex-wrap align-items-center">
@@ -34,6 +41,6 @@
 @endsection
 <style>
     .role{
-        margin-left: 150%;
+        margin-left: 100px;
     }
 </style>

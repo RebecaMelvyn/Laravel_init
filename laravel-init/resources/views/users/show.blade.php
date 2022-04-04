@@ -10,7 +10,16 @@
             <h1>{{ $user->name }}</h1>
             <h2>{{ $user->email }}</h2>
             <h6>Date de création : {{ $user->created_at }}</h6>
-            <h6>Date de dernière modif : {{ $user->updated_at }}</h6>
+            <h6>Date de dernière modif : {{ $user->updated_at }}</h6> <br/>
+
+            @if($user->is_admin)
+               <h5>Admin</h5>
+            @elseif(!$user->is_admin)
+                <h5>Non Admin</h5>
+            @endif
+
+
+
             <div class="my-4">
                 <a href="<?= url('/users'); ?>" title="">Retour à la liste</a>
             </div>
